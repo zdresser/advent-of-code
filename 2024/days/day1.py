@@ -15,7 +15,7 @@ def main():
 
     difference = 0
 
-    for i in range(len(list1)):
+    for i in list1:
         diff = abs(list1[i] - list2[i])
         difference += diff
 
