@@ -1,6 +1,6 @@
 import re
 def clean_input(file) -> str:
-  pattern = "mul\((\d+),(\d+)\)"
+  pattern = r"mul\((\d+),(\d+)\)"
   string_result = re.findall(pattern, file)
   int_result = [(int(a), int(b)) for a,b in string_result]
   return int_result
