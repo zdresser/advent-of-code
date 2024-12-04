@@ -1,9 +1,6 @@
 def problem_1(hash, lines):
-    print(hash)
-    print(lines)
     xmas_total = 0
     for line, value in enumerate(lines):
-
         for idx, char in enumerate(value):
 
             if char == "X":
@@ -75,6 +72,21 @@ def problem_1(hash, lines):
     return xmas_total
 
 
+def problem_2(hash, lines):
+    xmas_total = 0
+    valid = {("M", "S"), ("S", "M")}
+    for line, value in enumerate(lines):
+        for idx, char in enumerate(value):
+            if char == "A":
+                down_left = hash.get((line - 1, idx - 1))
+                up_right = hash.get((line + 1, idx + 1))
+                up_left = hash.get((line + 1, idx - 1))
+                down_right = hash.get((line - 1, idx + 1))
+                if (down_left, up_right) in valid and (up_left, down_right) in valid:
+                    xmas_total += 1
+    return xmas_total
+
+
 def create_hash_map(lines):
     result = {}
     for line, value in enumerate(lines):
@@ -95,6 +107,8 @@ def main():
 
         answer_1 = problem_1(hash_map, lines)
         print(f"The answer to Problem 1 is {answer_1}")
+        answer_2 = problem_2(hash_map, lines)
+        print(f"The answer to Problem 2 is {answer_2}")
 
 
 if __name__ == "__main__":
